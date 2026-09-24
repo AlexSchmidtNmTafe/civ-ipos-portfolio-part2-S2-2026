@@ -1,9 +1,10 @@
 import unittest
 from unittest.mock import patch
-from src.task_manager import add_task, delete_task, filter_tasks_by_status
+from src.task_manager import add_task, delete_task, filter_tasks_by_status, list_tasks
 from src.file_handler import save_tasks, load_tasks
 from src.task import Task
 import os
+
 
 TEST_FILE = "test_tasks.bin"
 
@@ -106,6 +107,9 @@ class TestTaskManager(unittest.TestCase):
         self.assertEqual(len(loaded_tasks), 1)
         self.assertEqual(loaded_tasks[0].title, "Persistent Task")
 
-
+    @patch("src.task_manager.console")
+    def test_task_list_rich(self, mock_console):
+        pass
+    
 if __name__ == "__main__":
     unittest.main()
