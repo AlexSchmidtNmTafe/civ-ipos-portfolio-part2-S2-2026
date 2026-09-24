@@ -109,12 +109,11 @@ class TestTaskManager(unittest.TestCase):
 
     @patch("src.task_manager.console")
     def test_task_list_rich(self, mock_console):
-        tasks = [
-            Task("Test Task", "Description", "15-12-2026")
-        ]
+        tasks = [Task("Test Task", "Description", "15-12-2026")]
 
         list_tasks(tasks)
         mock_console.print.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()
