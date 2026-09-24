@@ -4,9 +4,8 @@ from datetime import datetime
 from dateutil import parser
 from rich.console import Console
 from rich.table import Table
-
-
 console = Console()
+
 
 def add_task(tasks, title, description, due_date):
     """
@@ -99,14 +98,13 @@ def list_tasks(tasks, status=None):
     if not filtered:
         print("No tasks found.")
         return
+
     table = Table(title="Task List")
 
     table.add_column("Title")
     table.add_column("Description")
     table.add_column("Due Date")
     table.add_column("Status")
-
-   
 
     for task in filtered:
         table.add_row(
