@@ -60,6 +60,14 @@ class TestTaskManager(unittest.TestCase):
         result = add_task(self.tasks, "Test Task", "Description", "2024-12-01")
         self.assertFalse(result)
 
+    def test_add_past_due_date(self):
+        """
+        Test adding a task with a due date that is in the past.
+        Verify that the function handles the past date and returns False.
+        """
+        result = add_task(self.tasks, "Test Task 2", "Description", "01-05-2026")
+        self.assertFalse(result)
+
     def test_delete_task(self):
         """
         Test deleting a task by its title.
