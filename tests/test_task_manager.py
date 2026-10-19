@@ -1,8 +1,10 @@
+import os
 import unittest
-from src.task_manager import add_task, delete_task, filter_tasks_by_status
+from unittest.mock import patch
+
 from src.file_handler import save_tasks, load_tasks
 from src.task import Task
-import os
+from src.task_manager import add_task, delete_task, filter_tasks_by_status, list_tasks
 
 TEST_FILE = "test_tasks.bin"
 
@@ -48,9 +50,36 @@ class TestTaskManager(unittest.TestCase):
         Test adding a duplicate task with the same title.
         Verify that duplicates are not allowed and the function returns False.
         """
-        add_task(self.tasks, "Test Task", "Description", "01-12-2021")
-        result = add_task(self.tasks, "Test Task", "New Description", "02-12-2024")
+        add_task(self.tasks, "Test1", "Description", "01-12-2021")
+        result = add_task(self.tasks, "Test1", "New Description", "02-12-2024")
         self.assertFalse(result)
+
+    @patch("src.task_manager.save_tasks")
+    def test_add_duplicate_task_with_whitespace(self, mock_save_tasks):
+        """
+                Test adding a duplicate task with the same title.
+                But 2 titles differ by the addition of leading whitespaces
+              Verify that duplicates are not allowed and the function returns False.
+               """
+        tasks = [Task("Test Task", "Description", "01-12-2024")]
+
+        result2 = add_task(tasks, "  Test Task", "New Description", "02-12-2024")
+
+        self.assertFalse(result2)
+        mock_save_tasks.assert_not_called()
+
+    @patch("src.task_manager.save_tasks")
+    def test_add_duplicate_task_with_diff_case(self, mock_save_tasks):
+        """
+        Test adding a duplicate task with the same title.
+        Title 1 : task1
+        Title 2: TASK1
+        Verify that duplicates are not allowed and the function returns False.
+        """
+        tasks = [Task("Task1", "Description", "01-12-2024")]
+        result = add_task(tasks, "TASK1", "New Description", "02-12-2024")
+        self.assertFalse(result)
+        mock_save_tasks.assert_not_called()
 
     def test_add_invalid_due_date(self):
         """
@@ -94,6 +123,20 @@ class TestTaskManager(unittest.TestCase):
         loaded_tasks = load_tasks()
         self.assertEqual(len(loaded_tasks), 1)
         self.assertEqual(loaded_tasks[0].title, "Persistent Task")
+
+    @patch("src.task_manager.console")
+    def test_task_list_rich(self, mock_console):
+        """
+           Test that list_tasks displays tasks using a Rich table.
+
+           Verify that the Rich console's print() method is called
+           once when a task list is displayed.
+           """
+        tasks = [Task("Mock test", "Description", "12-12-2024")]
+
+        # save_tasks(tasks)
+        list_tasks(tasks)
+        mock_console.print.assert_called_once()
 
 
 if __name__ == "__main__":
