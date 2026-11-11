@@ -1,8 +1,7 @@
 from src.task import Task
 from src.file_handler import save_tasks
-from datetime import datetime
+# from datetime import datetime
 from dateutil import parser
-
 
 
 def add_task(tasks, title, description, due_date):
@@ -30,7 +29,6 @@ def add_task(tasks, title, description, due_date):
         return False
 
 
-
 # Issue 1 DATE VALIDATION ==================================
     # Validate due date format
     try:
@@ -44,9 +42,6 @@ def add_task(tasks, title, description, due_date):
     save_tasks(tasks)
     return True
 # ===========================================================
-
-
-
 
 
 def delete_task(tasks, title):
