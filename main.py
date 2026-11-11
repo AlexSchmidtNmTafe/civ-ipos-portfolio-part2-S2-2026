@@ -9,6 +9,10 @@ def cli():
     """Task Manager CLI."""
 
     click.echo("Task Manager CLI")
+    click.echo("1. Add Task")
+    click.echo("2. Delete Task")
+    click.echo("3. List Tasks")
+    click.echo("4. Exit")
 
     choice = click.prompt("Enter your choice")
 
