@@ -24,9 +24,9 @@ def add_task(tasks, title, description, due_date):
         - Saves the updated task list to a file using `save_tasks`.
     """
     # Prevent duplicate tasks
-    if any(task.title == title for task in tasks):
-        print("Error: A task with this title already exists.")
-        return False
+    # if any(task.title == title for task in tasks):
+    #     print("Error: A task with this title already exists.")
+    #     return False
 
 
 # Issue 1 DATE VALIDATION ==================================
