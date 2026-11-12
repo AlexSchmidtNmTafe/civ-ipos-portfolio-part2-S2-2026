@@ -35,7 +35,7 @@ def add_task(tasks, title, description, due_date):
         # datetime.strptime(due_date, "%d-%m-%Y")
         parser.parse(due_date, dayfirst=True)
     except ValueError:
-        print("Error: Invalid date format. Use DD-MM-YYYY.")
+        print(f"Error: {due_date} is an invalid date format. Use DD-MM-YYYY.")
         return False
 
     tasks.append(Task(title, description, due_date))
