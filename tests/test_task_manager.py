@@ -59,7 +59,7 @@ class TestTaskManager(unittest.TestCase):
         Test add_task function by adding tasks each with an invalid due date.
         Verify that the function handles invalid input gracefully and returns False.
         """
-        invalid_dates = ["date", "43", "12/122/2026", "122/12/2026", "2026/12-44", "12@3@2026", "25\12\2026"]
+        invalid_dates = ["DDD", "43", "12/122/2026", "122/12/2026", "2026/12-44", "12@3@2026", "25\12\2026"]
         invalids = []
 
         for invalid_date in invalid_dates:
