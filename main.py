@@ -15,21 +15,22 @@ def main():
             title = input("Title: ")
             description = input("Description: ")
             due_date = input("Due Date (DD-MM-YYYY): ")
+            print("\n\n\n")
             add_task(tasks, title, description, due_date)
         elif choice == "2":
             title = input("Title of the task to delete: ")
             if delete_task(tasks, title):
-                print("Task deleted successfully.")
+                print("Task deleted successfully. \n\n\n")
             else:
-                print("Task not found.")
+                print("Task not found.\n\n\n")
         elif choice == "3":
-            print("\n")
+            print("\n\n\n")
             list_tasks(tasks)
         elif choice == "4":
             print("Exiting Task Manager.")
             break
         else:
-            print("Invalid choice. Try again.")
+            print("Invalid choice. Try again.\n\n\n")
 
 
 if __name__ == "__main__":

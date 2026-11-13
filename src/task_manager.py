@@ -41,7 +41,7 @@ def add_task(tasks, title, description, due_date):
         return False
 
     tasks.append(Task(title, description, due_date))
-    task_display.display_task_added()
+    task_display.display_task_added(title, description, due_date)
     save_tasks(tasks)
     return True
 

@@ -50,10 +50,7 @@ class TaskDisplay():
         self.console.print(panel)
 
     def display_task_added(self, title, description, due_date):
-        content += f"[green] Task Created Successfully [green]\n\n"
-        content += f"[bold]Title: {title} [bold]\n"
-        content += f"[bold]Description {description} [bold]\n"
-        content += f"[bold]Due Date: {due_date} [bold]\n"
+        content = f"[green] Task Created Successfully [green]\n\n [bold]Title: {title} [bold]\n [bold]Description {description} [bold]\n [bold]Title: {title} [bold]\n [bold]Due Date: {due_date} [bold]\n"
 
-        panel = Panel(content, title="New Task", border_style="blue")
-        self.console.print()
+        panel = Panel(content, title="New Task", border_style="blue", width=self.console.width // 2)
+        self.console.print(panel)
