@@ -7,6 +7,12 @@ task_display = TaskDisplay()
 
 
 def load_options():
+    """
+    Display the available Task Manager menu options.
+
+    Returns:
+        None
+    """
     task_display.display_options()
 
 def add_task(tasks, title, description, due_date):
@@ -22,10 +28,9 @@ def add_task(tasks, title, description, due_date):
     Returns:
         bool: True if the task is added successfully, False otherwise.
 
-    Raises:
-        ValueError: If the due date is not in the correct format.
-
     Side Effects:
+        - Displays an error message if the title already exists or the due date is invalid.
+        - Displays a confirmation message when the task is added successfully.
         - Saves the updated task list to a file using `save_tasks`.
     """
     # Prevent duplicate tasks
@@ -74,11 +79,16 @@ def list_tasks(tasks, status=None):
 
     Args:
         tasks (list): The list of existing Task objects.
-        status (str, optional): The status to filter tasks
-        by (e.g., "pending" or "completed").
+        status (str, optional): The status to filter tasks by,
+            such as "pending" or "completed". Defaults to None.
 
     Returns:
         None
+
+    Side Effects:
+        - Displays the tasks using the TaskDisplay class.
+        - Only displays tasks matching the specified status if a
+          status filter is provided.
     """
     if status:
         filtered = filter_tasks_by_status(tasks, status)

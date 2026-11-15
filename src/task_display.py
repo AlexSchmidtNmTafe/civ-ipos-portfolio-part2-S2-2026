@@ -1,16 +1,35 @@
+
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
-from rich.align import Align
-from rich.prompt import Prompt
 from rich import box
 
 class TaskDisplay():
+    """
+    A class to handle the terminal display of tasks and menu options
+    using the Rich library.
+    """
 
     def __init__(self, console=None):
+        """
+        Initialise the TaskDisplay with a Rich Console instance.
+
+        Args:
+            console (Console, optional): A Rich Console instance.
+            Defaults to a new Console.
+        """
         self.console = console or Console()
 
     def display_tasks(self, tasks):
+        """
+        Display tasks in a formatted Rich table.
+
+        Args:
+            tasks (list): A list of Task objects containing task details.
+
+        Returns:
+            None
+        """
         table = Table(
                     title=f"[cadet_blue][bold]List of Tasks[bold][cadet_blue]", 
                     border_style="cadet_blue", 
@@ -37,7 +56,12 @@ class TaskDisplay():
 
     
     def display_options(self):
+        """
+        Display the main menu options inside a Rich panel.
 
+        Returns:
+            None
+        """
         panel = Panel(
                     f"[blue]1. Add Task[blue]\n"
                     f"[red]2. Delete Task[red]\n"
@@ -50,6 +74,17 @@ class TaskDisplay():
         self.console.print(panel)
 
     def display_task_added(self, title, description, due_date):
+        """
+        Display a success message and the details of a newly created task.
+
+        Args:
+            title (str): The title of the created task.
+            description (str): A brief description of the created task.
+            due_date (str): The due date of the created task.
+
+        Returns:
+            None
+        """
         content = f"[green] Task Created Successfully [green]\n\n [bold]Title: {title} [bold]\n [bold]Description {description} [bold]\n [bold]Title: {title} [bold]\n [bold]Due Date: {due_date} [bold]\n"
 
         panel = Panel(content, title="New Task", border_style="blue", width=self.console.width // 2)
