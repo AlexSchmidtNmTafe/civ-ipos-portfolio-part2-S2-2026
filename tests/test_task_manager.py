@@ -3,7 +3,6 @@ from src.task_manager import add_task, delete_task, filter_tasks_by_status
 from src.file_handler import save_tasks, load_tasks
 from src.task import Task
 import os
-from dateutil import parser
 
 
 TEST_FILE = "test_tasks.bin"
