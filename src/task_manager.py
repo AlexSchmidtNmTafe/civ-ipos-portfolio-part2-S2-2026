@@ -94,9 +94,6 @@ def list_tasks(tasks, status=None):
         print("No tasks found.")
         return
 
-
-
-
     # List table ================================
 
     console=Console()
@@ -119,7 +116,6 @@ def list_tasks(tasks, status=None):
             task.description,
             task.due_date,
             task.status)
-        table.add_row("Hello World")
 
     console.print(table)
 
