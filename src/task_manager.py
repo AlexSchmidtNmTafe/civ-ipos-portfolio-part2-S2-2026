@@ -68,6 +68,7 @@ def delete_task(tasks, title):
 def list_tasks(tasks, status=None):
     """
     Display tasks in the task list, optionally filtered by status.
+    Tasks to be displayed in rows and columns in a table with status having a text colour.
 
     Args:
         tasks (list): The list of existing Task objects.
