@@ -98,7 +98,7 @@ def list_tasks(tasks, status=None):
 
     console=Console()
     #console.print("[green]Hello World[/green]")
-    print(console.color_system)
+    #print(console.color_system)
 
     table = Table(title="Tasks")
 
